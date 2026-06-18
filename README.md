@@ -3,10 +3,10 @@
 This project builds a Medallion Architecture (Bronze → Silver → Gold) pipeline using PySpark + Delta Lake to analyze route profitability for a commercial waste management dataset.
 
 ## Objectives
-Ingest raw route-level data
-Build clean business-ready KPIs
-Identify underperforming routes
-Provide BI-ready aggregated insights sliceable by date, region, BU, and area
+1. Ingest raw route-level data
+2. Build clean business-ready KPIs
+3. Identify underperforming routes
+4. Provide BI-ready aggregated insights sliceable by date, region, BU, and area
 
 ## Architecture
 CSV Source
