@@ -141,25 +141,25 @@ OR operational inefficiencies (low stop completion / utilization)
 # Key Analysis Performed
 1. Underperforming Routes
 
-Identified routes with:
+   Identified routes with:
 
-Low margin
-High cost per stop
-Poor completion rate
+   Low margin
+   High cost per stop
+   Poor completion rate
+
 2. Cost Driver Analysis
+   Breakdown of:
+   Fuel cost %
+   Labour cost %
+   Disposal cost %
 
-Breakdown of:
-
-Fuel cost %
-Labour cost %
-Disposal cost %
 3. Trend Analysis (3-Year Window)
+   Evaluated:
 
-Evaluated:
-
-Profitability trends
-Cost inflation impact
-Operational efficiency changes
+   Profitability trends
+   Cost inflation impact
+   Operational efficiency changes
+   
 # Key Insights
 Labour cost is the dominant driver of low-margin routes
 Fuel inefficiency strongly impacts rural regions
@@ -172,20 +172,20 @@ Improve labour utilization per route
 Focus on high-cost BU restructuring
 
 # Tech Stack
-PySpark
-Delta Lake
-Databricks
-SQL
-Python
+1. PySpark
+2. Delta Lake
+3. Databricks
+4. SQL
+5. Python
 
 # AI Usage Disclosure
 
 AI tools were used to:
 
-Assist with PySpark transformation logic
-Help design dimensional model
-Refine KPI definitions
-Improve documentation quality
+- Assist with PySpark transformation logic
+- Help design dimensional model
+- Refine KPI definitions
+- Improve documentation quality
 
 All outputs were validated and adjusted for correctness.
  
@@ -193,8 +193,8 @@ All outputs were validated and adjusted for correctness.
 
 This project demonstrates:
 
-End-to-end Delta Lake pipeline (Bronze → Silver → Gold)
-Medallion architecture implementation
-KPI engineering for logistics profitability
-Cost driver analysis and business insights
-BI-ready data modeling with Delta optimizations
+- End-to-end Delta Lake pipeline (Bronze → Silver → Gold)
+- Medallion architecture implementation
+- KPI engineering for logistics profitability
+- Cost driver analysis and business insights
+- BI-ready data modeling with Delta optimizations
