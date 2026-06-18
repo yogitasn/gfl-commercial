@@ -21,7 +21,6 @@ Power BI / Tableau Dashboard
 
 ## Bronze Layer
 # Purpose
-
 Raw ingestion of CSV data into Delta format without any transformations.
 
 # Key Actions
@@ -38,48 +37,52 @@ gfl-bronze.routes
 Transform raw data into analysis-ready route-level dataset.
 
 1. Key Transformations
-Removed duplicates (route_id + date)
-Handled missing values
-Created business KPIs
-Key Features Created
+- duplicates (route_id + date)
+- Handled missing values
+- Created business KPIs
+- Key Features Created
+
 2. Operational KPIs
-stop_completion_rate
-route_utilization_pct
-delay_minutes flag
+- stop_completion_rate
+- route_utilization_pct
+- delay_minutes flag
+
 3. Efficiency Metrics
-cost_per_stop
-revenue_per_km
-fuel_efficiency
-labour_efficiency
+- cost_per_stop
+- revenue_per_km
+- fuel_efficiency
+- labour_efficiency
+
 4. Risk Flags
-underperforming_flag
-margin_category
+- underperforming_flag
+- margin_category
+
 5. Output Table
-silver.route_profitability
-Gold Layer
-Purpose
+- silver.route_profitability
+
+##  Gold Layer
+# Purpose
 
 Create BI-ready aggregated dataset for dashboards and reporting.
-
-📐 Grain
 
 date + region + BU + area
 
 1. Key Aggregations
-Revenue & Cost
-total_revenue
-total_cost
-total_profit
-fuel_cost, labour_cost, disposal_cost, maintenance_cost, admin_cost
+- Revenue & Cost
+- total_revenue
+- total_cost
+- total_profit
+- fuel_cost, labour_cost, disposal_cost, maintenance_cost, admin_cost
 2. Operational Metrics
-stop_completion_rate (aggregated)
-route_utilization
+- stop_completion_rate (aggregated)
+- route_utilization
 3. Efficiency Metrics
-avg revenue per km
-avg fuel efficiency
+- avg revenue per km
+- avg fuel efficiency
 4. Output Table
-gold.route_profitability_summary
-📊 Dimensional Model (Logical Design)
+- gold.route_profitability_summary
+
+## Dimensional Model (Logical Design)
 
 Although Gold acts as the fact table, a logical star schema supports BI slicing.
 
@@ -91,7 +94,8 @@ dim_region
 dim_bu
 dim_area
 dim_route
-🧩 ERD
+
+# ERD
                 dim_date
                     |
 dim_region --- fact_route_profitability --- dim_route
@@ -138,6 +142,7 @@ A route is considered underperforming if:
 Gross margin < 15%
 OR gross profit < 0
 OR operational inefficiencies (low stop completion / utilization)
+
 # Key Analysis Performed
 1. Underperforming Routes
 
@@ -159,17 +164,17 @@ OR operational inefficiencies (low stop completion / utilization)
    Profitability trends
    Cost inflation impact
    Operational efficiency changes
-   
+
 # Key Insights
-Labour cost is the dominant driver of low-margin routes
-Fuel inefficiency strongly impacts rural regions
-Certain BUs consistently underperform due to route density issues
-Profitability improves slightly over time but cost pressure remains high
+- Labour cost is the dominant driver of low-margin routes
+- Fuel inefficiency strongly impacts rural regions
+- Certain BUs consistently underperform due to route density issues
+- Profitability improves slightly over time but cost pressure remains high
 # Recommendation
-Optimize route clustering in rural regions
-Reduce empty travel distance to improve fuel efficiency
-Improve labour utilization per route
-Focus on high-cost BU restructuring
+- Optimize route clustering in rural regions
+- Reduce empty travel distance to improve fuel efficiency
+- Improve labour utilization per route
+- Focus on high-cost BU restructuring
 
 # Tech Stack
 1. PySpark
