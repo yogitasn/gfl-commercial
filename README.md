@@ -29,7 +29,7 @@ Data type casting
 Storage in Delta table
 
 # Output Table
-gfl-bronze.routes
+`gfl-bronze.routes`
 
 ## Silver Layer
 # Purpose
@@ -58,14 +58,14 @@ Transform raw data into analysis-ready route-level dataset.
 - margin_category
 
 5. Output Table
-- silver.route_profitability
+- `gfl-silver.route_profitability`
 
 ##  Gold Layer
 # Purpose
 
 Create BI-ready aggregated dataset for dashboards and reporting.
 
-date + region + BU + area
+`date + region + BU + area`
 
 1. Key Aggregations
 - Revenue & Cost
@@ -73,6 +73,7 @@ date + region + BU + area
 - total_cost
 - total_profit
 - fuel_cost, labour_cost, disposal_cost, maintenance_cost, admin_cost
+
 2. Operational Metrics
 - stop_completion_rate (aggregated)
 - route_utilization
@@ -80,20 +81,20 @@ date + region + BU + area
 - avg revenue per km
 - avg fuel efficiency
 4. Output Table
-- gold.route_profitability_summary
+- `gfl-gold.route_profitability_summary`
 
 ## Dimensional Model (Logical Design)
 
 Although Gold acts as the fact table, a logical star schema supports BI slicing.
 
 # Fact Table
-fact_route_profitability
+`fact_route_profitability`
 # Dimensions
-dim_date
-dim_region
-dim_bu
-dim_area
-dim_route
+`dim_date`
+`dim_region`
+`dim_bu`
+`dim_area`
+`dim_route`
 
 # ERD
                 dim_date
@@ -110,7 +111,7 @@ Delta Lake Features Used
 
 Enabled using:
 
-option("overwriteSchema", "true")
+`option("overwriteSchema", "true")`
 
 Allows iterative KPI and schema updates.
 
@@ -126,22 +127,23 @@ Improves performance for time-based queries.
 
 Optimizes BI filtering performance:
 
-OPTIMIZE gold.route_profitability_summary
-ZORDER BY (region, bu, area);
+`OPTIMIZE gold.route_profitability_summary
+ZORDER BY (region, bu, area)`
+
 4. Time Travel
 
 Delta Lake enables:
 
-Historical KPI comparison
-Data rollback
-Auditability
+- Historical KPI comparison
+- Data rollback
+- Auditability
 # Underperforming Route Definition
 
 A route is considered underperforming if:
 
-Gross margin < 15%
-OR gross profit < 0
-OR operational inefficiencies (low stop completion / utilization)
+- Gross margin < 15%
+- OR gross profit < 0
+- OR operational inefficiencies (low stop completion / utilization)
 
 # Key Analysis Performed
 1. Underperforming Routes
